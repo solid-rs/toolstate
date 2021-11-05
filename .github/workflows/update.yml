@@ -1,0 +1,39 @@
+name: Update
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    # Runs at 2:00 UTC every day (to give the release process 2h to complete).
+    - cron: '0 2 * * *'
+
+jobs:
+  update-data:
+    name: Update Data
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Checkout Data
+        uses: actions/checkout@v2
+        with:
+          path: data
+          ref: data
+
+      - name: Install Dependencies
+        run: |
+          sh .github/etc/install-deno.sh
+          rustup --version
+
+      - name: Update Data
+        run: deno run -A update-data.ts
+
+      - name: Push Data
+        run: |
+          cd data
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          # Commit and push only if a change is made
+          git add .
+          { git commit -m 'Update data' && git push; } || true
