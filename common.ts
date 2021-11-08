@@ -26,3 +26,26 @@ export interface TargetState {
 	name: string,
 	type: 'ok' | 'error',
 }
+
+export function getDateOfNightlyToolchain(name: string): number | null {
+	const match = /nightly-([0-9]+)-([0-9]+)-([0-9]+)/.exec(name);
+	if (match) {
+		return Date.UTC(parseInt(match[1], 10), parseInt(match[2], 10) - 1, parseInt(match[3], 10));
+	} else {
+		return null;
+	}
+}
+
+export function getLatestNightlyDateOfTimeline(timeline: Timeline): number {
+	return timeline.toolchains.reduce(
+		(acc, { name }) => {
+			const thisNightly = getDateOfNightlyToolchain(name);
+			if (thisNightly != null) {
+				return Math.max(acc, thisNightly);
+			} else {
+				return acc;
+			}
+		},
+		Date.UTC(2021, 10, 4)	
+	);
+}

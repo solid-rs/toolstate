@@ -5,7 +5,8 @@ import * as log from 'https://deno.land/std@0.113.0/log/mod.ts';
 import { ensureDir } from 'https://deno.land/std@0.113.0/fs/ensure_dir.ts';
 import { exists } from 'https://deno.land/std@0.113.0/fs/exists.ts';
 
-import { TARGETS, Timeline, ToolchainState, TargetState } from "./common.ts";
+import { TARGETS, Timeline, ToolchainState, TargetState,
+	getLatestNightlyDateOfTimeline } from "./common.ts";
 
 const parsedArgs = flags.parse(Deno.args, {
 	'alias': {
@@ -176,18 +177,7 @@ function formatDate(t: number) {
 	return `${pad(d.getUTCFullYear(), 4)}-${pad(d.getUTCMonth() + 1, 2)}-${pad(d.getUTCDate(), 2)}`;
 }
 
-const latestKnownNightly = timeline.toolchains.reduce(
-	(acc, { name }) => {
-		const match = /nightly-([0-9]+)-([0-9]+)-([0-9]+)/.exec(name);
-		if (match) {
-			const thisNightly = Date.UTC(parseInt(match[1], 10), parseInt(match[2], 10), parseInt(match[3], 10));
-			return Math.max(acc, thisNightly);
-		} else {
-			return acc;
-		}
-	},
-	Date.UTC(2021, 10, 4)	
-);
+const latestKnownNightly = getLatestNightlyDateOfTimeline(timeline);
 const now = new Date();
 const latestNightly = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
 
