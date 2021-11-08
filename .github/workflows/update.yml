@@ -38,5 +38,17 @@ jobs:
           git add .
           { git commit -m 'Update data' && git push; } || true
 
+      - name: Render the website
+        run: |
+          deno run -A build-web.ts
+          touch build/.nojekyll
+
+      - name: Deploy the website
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages
+          folder: build
+          single-commit: true
+
       - name: Fail if the latest toolchain is failing
         run:  deno run -A alerter.ts
