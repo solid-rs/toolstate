@@ -50,3 +50,20 @@ const templateContext = {
 const index = await promisify(nunjucks.render)(
     path.join(webDirPath, 'index.html'), templateContext);
 await Deno.writeTextFile(path.join(buildDirPath, 'index.html'), index);
+
+// JSON API
+logger.info(`Rendering 'api/v0/toolchains.json'`);
+const apiV0Toolchains = timeline.toolchains.map(toolchain => {
+    const ok = toolchain.type === 'ok' && toolchain.targets.every(t => t.type === 'ok');
+    const rustc_version = toolchain.type === 'ok' ? toolchain.rustc_version : null;
+    return {
+        name: toolchain.name,
+        rustc_version,
+        status: {
+            "std": ok,
+        },
+    };
+});
+await ensureDir(path.join(buildDirPath, 'api/v0'));
+await Deno.writeTextFile(path.join(buildDirPath, 'api/v0/toolchains.json'),
+    JSON.stringify(apiV0Toolchains));
