@@ -6,7 +6,7 @@ import { ensureDir } from 'https://deno.land/std@0.113.0/fs/ensure_dir.ts';
 import { exists } from 'https://deno.land/std@0.113.0/fs/exists.ts';
 
 import { TARGETS, Timeline, ToolchainState, TargetState,
-	getLatestNightlyDateOfTimeline } from "./common.ts";
+	getLatestNightlyDateOfTimeline, getToday } from "./common.ts";
 
 const parsedArgs = flags.parse(Deno.args, {
 	'alias': {
@@ -178,8 +178,7 @@ function formatDate(t: number) {
 }
 
 const latestKnownNightly = getLatestNightlyDateOfTimeline(timeline);
-const now = new Date();
-const latestNightly = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+const latestNightly = getToday();
 
 logger.info(`The latest nightly toolchain with a known state is ${formatDate(latestKnownNightly)}`);
 logger.info(`The latest (possible) nightly toolchain is ${formatDate(latestNightly)}`);

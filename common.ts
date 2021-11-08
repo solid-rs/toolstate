@@ -49,3 +49,8 @@ export function getLatestNightlyDateOfTimeline(timeline: Timeline): number {
 		Date.UTC(2021, 10, 4)	
 	);
 }
+
+export function getToday(): number {
+	const now = new Date();
+	return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+}
