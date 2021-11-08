@@ -8,5 +8,9 @@ This [Deno][2] script attempts to build the `:/litmus` test project and records 
 
 **Warning: This script will uninstall the toolchain after checking its build status!**
 
+## `alerter.ts`
+
+This Deno script reads `:/data/timeline.toml` and exits with a non-zero status code if attention is required.
+
 [1]: https://doc.rust-lang.org/nightly/rustc/platform-support/kmc-solid.html
 [2]: https://deno.land/

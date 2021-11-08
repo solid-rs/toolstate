@@ -12,24 +12,24 @@ jobs:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     steps:
-      - name: Checkout
+      - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - name: Checkout Data
+      - name: Checkout the latest data
         uses: actions/checkout@v2
         with:
           path: data
           ref: data
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           sh .github/etc/install-deno.sh
           rustup --version
 
-      - name: Update Data
+      - name: Update the data
         run: deno run -A update-data.ts
 
-      - name: Push Data
+      - name: Push the new data
         run: |
           cd data
           git config user.name github-actions
@@ -37,3 +37,6 @@ jobs:
           # Commit and push only if a change is made
           git add .
           { git commit -m 'Update data' && git push; } || true
+
+      - name: Fail if the latest toolchain is failing
+        run:  deno run -A alerter.ts
