@@ -11,6 +11,10 @@ jobs:
     name: Update Data
     runs-on: ubuntu-20.04
     timeout-minutes: 10
+    env:
+      # Enforce subresource integrity for Deno modules
+      # https://deno.land/manual@v1.15.3/linking_to_external_code/integrity_checking
+      DENO_RUN: deno run --lock=lock.json --cached-only
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -26,8 +30,11 @@ jobs:
           sh .github/etc/install-deno.sh
           rustup --version
 
+      - name: Reload Deno cache
+        run: deno cache --reload --lock=lock.json deps.ts
+
       - name: Update the data
-        run: deno run -A update-data.ts
+        run: $DENO_RUN -A update-data.ts
 
       - name: Push the new data
         run: |
@@ -40,7 +47,7 @@ jobs:
 
       - name: Render the website
         run: |
-          deno run -A build-web.ts
+          $DENO_RUN -A build-web.ts
           touch build/.nojekyll
 
       - name: Deploy the website
@@ -51,4 +58,4 @@ jobs:
           single-commit: true
 
       - name: Fail if the latest toolchain is failing
-        run:  deno run -A alerter.ts
+        run:  $DENO_RUN -A alerter.ts

@@ -1,11 +1,4 @@
-import * as toml from 'https://deno.land/std@0.113.0/encoding/toml.ts';
-import * as path from 'https://deno.land/std@0.113.0/path/mod.ts';
-import * as log from 'https://deno.land/std@0.113.0/log/mod.ts';
-import { promisify } from 'https://deno.land/std@0.113.0/node/util.ts';
-import nunjucks from "https://deno.land/x/nunjucks@3.2.3/mod.js";
-
-import { ensureDir } from 'https://deno.land/std@0.113.0/fs/ensure_dir.ts';
-
+import { toml, path, log, promisify, _nunjucks as nunjucks, ensureDir } from './deps.ts';
 import { TARGETS, Timeline, getDateOfNightlyToolchain,
 	getLatestNightlyDateOfTimeline  } from "./common.ts";
 

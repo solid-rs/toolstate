@@ -1,10 +1,4 @@
-import * as flags from 'https://deno.land/std@0.113.0/flags/mod.ts';
-import * as toml from 'https://deno.land/std@0.113.0/encoding/toml.ts';
-import * as path from 'https://deno.land/std@0.113.0/path/mod.ts';
-import * as log from 'https://deno.land/std@0.113.0/log/mod.ts';
-import { ensureDir } from 'https://deno.land/std@0.113.0/fs/ensure_dir.ts';
-import { exists } from 'https://deno.land/std@0.113.0/fs/exists.ts';
-
+import { flags, toml, path, log, ensureDir, exists } from './deps.ts';
 import { TARGETS, Timeline, ToolchainState, TargetState,
 	getLatestNightlyDateOfTimeline, getToday } from "./common.ts";
 
