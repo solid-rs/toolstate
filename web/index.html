@@ -72,7 +72,8 @@
             a:hover { color: #f79; }
         }
 
-        ul { font-size: 90%; margin: 2em 0; }
+        ul { font-size: 90%; margin: 2em 1em 2em 0; }
+        li { margin: 1em 0; }
 
         table {
             --background-color: #fff;
@@ -144,6 +145,11 @@
     <p>
         Tier 3 ターゲットは標準ライブラリのバイナリが提供されないため、<a href="https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#build-std"><code>-Z build-std</code></a> オプションによってアプリケーションと一緒にビルドする必要があります。<span class="target-ok">OK</span> は <code>cargo build -Z build-std</code> が対応するツールチェーンとターゲットの組み合わせで成功したことを表します。
     </p>
+    <ul>
+        <li><a href="https://rustup.rs/">rustup</a> で配布される公式ビルドをテストしています。</li>
+        <li>このツールは標準ライブラリのビルドが成功するかどうかのみを判定します。ビルドが成功しても、リンクしたアプリケーションが正しく動作することは保証できません。</li>
+        <li>Rust コンパイラおよび標準ライブラリは <a href="https://foundation.rust-lang.org/">Rust Foundation</a> を中心としてコミュニティによって開発されているオープンソースソフトウェアであり、動作保証はいたしかねます。</li>
+    </ul>
     <table align="center">
         <thead>
             <tr>
