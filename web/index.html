@@ -184,7 +184,7 @@
                     {% else %}
                         <td><code>{{ toolchain_st.name }}</code></td>
                         <td colspan="{{ targets.length }}" class="toolchain-unavailable">
-                            <span title="このバージョンのツールチェーンをrustup経由で取得しようとして失敗したことを表します。これはrustupのサーバー側の一時的な問題またはネットワーク障害によって起こります。">不明</span>
+                            <span title="このバージョンのツールチェーンをrustup経由で取得しようとして失敗したことを表します。これはrustupのサーバー側の一時的な問題またはネットワーク障害、あるいは単にこのバージョンがリリースされていないことが原因で起こります。">不明</span>
                         </td>
                     {% endif %}
                 </tr>
