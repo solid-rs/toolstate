@@ -35,7 +35,7 @@ timeline.toolchains.sort((x, y) => {
 });
 
 // Copy assets
-for (const assetName of ['solid-rs.png', 'solid-rs.webp']) {
+for (const assetName of ['solid-rs.svg']) {
     logger.info(`Copying '${assetName}'`);
     await Deno.copyFile(
         path.join(webDirPath, assetName),
