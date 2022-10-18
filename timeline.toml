@@ -5858,3 +5858,20 @@ type          = "error"
 [[toolchains.targets]]
 name          = "armv7a-kmc-solid_asp3-eabihf"
 type          = "error"
+
+[[toolchains]]
+name          = "nightly-2022-10-18"
+type          = "ok"
+rustc_version = "rustc 1.66.0-nightly (06f049a35 2022-10-17)"
+
+[[toolchains.targets]]
+name          = "aarch64-kmc-solid_asp3"
+type          = "error"
+
+[[toolchains.targets]]
+name          = "armv7a-kmc-solid_asp3-eabi"
+type          = "error"
+
+[[toolchains.targets]]
+name          = "armv7a-kmc-solid_asp3-eabihf"
+type          = "error"
