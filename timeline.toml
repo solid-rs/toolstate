@@ -8701,3 +8701,7 @@ type          = "error"
 [[toolchains.targets]]
 name          = "armv7a-kmc-solid_asp3-eabihf"
 type          = "error"
+
+[[toolchains]]
+name          = "nightly-2023-04-04"
+type          = "missing"
