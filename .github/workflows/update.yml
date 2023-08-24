@@ -17,10 +17,10 @@ jobs:
       DENO_RUN: deno run --lock=lock.json --cached-only
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Checkout the latest data
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: data
           ref: data
