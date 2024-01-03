@@ -13320,3 +13320,7 @@ type          = "ok"
 [[toolchains]]
 name          = "nightly-2024-01-02"
 type          = "missing"
+
+[[toolchains]]
+name          = "nightly-2024-01-03"
+type          = "missing"
