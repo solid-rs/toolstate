@@ -20794,3 +20794,20 @@ type          = "ok"
 [[toolchains.targets]]
 name          = "armv7a-kmc-solid_asp3-eabihf"
 type          = "ok"
+
+[[toolchains]]
+name          = "nightly-2025-03-23"
+type          = "ok"
+rustc_version = "rustc 1.87.0-nightly (b48576b4d 2025-03-22)"
+
+[[toolchains.targets]]
+name          = "aarch64-kmc-solid_asp3"
+type          = "ok"
+
+[[toolchains.targets]]
+name          = "armv7a-kmc-solid_asp3-eabi"
+type          = "ok"
+
+[[toolchains.targets]]
+name          = "armv7a-kmc-solid_asp3-eabihf"
+type          = "ok"
