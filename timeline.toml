@@ -21699,3 +21699,20 @@ type          = "ok"
 [[toolchains]]
 name          = "nightly-2025-05-15"
 type          = "missing"
+
+[[toolchains]]
+name          = "nightly-2025-05-16"
+type          = "ok"
+rustc_version = "rustc 1.89.0-nightly (d97326eab 2025-05-15)"
+
+[[toolchains.targets]]
+name          = "aarch64-kmc-solid_asp3"
+type          = "ok"
+
+[[toolchains.targets]]
+name          = "armv7a-kmc-solid_asp3-eabi"
+type          = "ok"
+
+[[toolchains.targets]]
+name          = "armv7a-kmc-solid_asp3-eabihf"
+type          = "ok"
