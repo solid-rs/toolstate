@@ -29757,3 +29757,20 @@ type          = "error"
 [[toolchains.targets]]
 name          = "armv7a-kmc-solid_asp3-eabihf"
 type          = "error"
+
+[[toolchains]]
+name          = "nightly-2026-09-02"
+type          = "ok"
+rustc_version = "rustc 1.100.0-nightly (5db7f4be8 2026-09-01)"
+
+[[toolchains.targets]]
+name          = "aarch64-kmc-solid_asp3"
+type          = "error"
+
+[[toolchains.targets]]
+name          = "armv7a-kmc-solid_asp3-eabi"
+type          = "error"
+
+[[toolchains.targets]]
+name          = "armv7a-kmc-solid_asp3-eabihf"
+type          = "error"
